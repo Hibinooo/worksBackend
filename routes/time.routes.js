@@ -1,6 +1,6 @@
 const Router = require('express');
 const router = new Router();
-const timeController = require('../controller/time.controller');
+const timeController = require('../controllers/time.controller');
 
 router.post('/times', timeController.createTime)
 router.get('/times', timeController.getTime)
