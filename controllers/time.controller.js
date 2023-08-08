@@ -1,15 +1,15 @@
-const db = require('../bd');
-class TimeController {
+import db from '../bd.js';
+const TimeController = {
     async createTime(req, res){
         const {color, price, userId, title} = req.body
         const newTime = await db.query('INSERT INTO times (color, price, user_id, title) values ($1,$2,$3,$4) RETURNING *',[color, price, userId, title])
         res.json(newTime.rows)
-    }
+    },
     async getTime(req, res){
         const userId = req.query.id
         const work = await db.query('SELECT * FROM times where user_id = $1 ORDER BY id', [userId])
         res.json(work.rows)
-    }
+    },
     // async deleteTime(req, res){
     //     const timesId = req.query.timesId
     //     const work = await db.query('SELECT * FROM times where user_id = $1', [timesId])
@@ -22,4 +22,4 @@ class TimeController {
     }
 }
 
-module.exports = new TimeController();
+export default TimeController

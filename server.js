@@ -3,9 +3,9 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import userRouter from './routes/user.routes.js';
-// import timeRouter from './routes/time.routes';
-// import workRouter from './routes/work.routes';
-// import authRouter from './routes/auth.routes';
+import timeRouter from './routes/time.routes.js';
+import workRouter from './routes/work.routes.js';
+import authRouter from './routes/auth.routes.js';
 
 dotenv.config();
 
@@ -17,9 +17,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 app.use('/api', userRouter);
-// app.use('/api', timeRouter);
-// app.use('/api', workRouter);
-// app.use('/api', authRouter);
+app.use('/api', timeRouter);
+app.use('/api', workRouter);
+app.use('/api', authRouter);
 
 const start = async () => {
     try {

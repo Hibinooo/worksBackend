@@ -1,8 +1,8 @@
-const db = require('../bd');
-const bcrypt = require('bcrypt');
-const jwtTokens = require('../utils/jwt.helpers')
+import db from '../bd.js';
+import bcrypt from 'bcrypt';
+import jwtTokens from '../utils/jwt.helpers.js'
 
-class AuthController {
+const AuthController = {
     async login(req, res) {
         const { email, password } = req.body;
         const users = await db.query(`SELECT * FROM users WHERE email = $1`, [email])
@@ -13,4 +13,4 @@ class AuthController {
     }
 }
 
-module.exports = new AuthController()
+export default AuthController

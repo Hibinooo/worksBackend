@@ -1,11 +1,12 @@
-const db = require('../bd');
-class WorkController {
+import db from '../bd.js';
+
+const WorkController = {
     async createWork(req, res) {
         const { fullDate, userId, timesId } = req.body
         const newWork = await db.query('INSERT INTO work (date_time, user_id, times_id) values ($1,$2,$3) RETURNING *',
             [fullDate, userId, timesId])
         res.json(newWork.rows)
-    }
+    },
     async getWork(req, res) {
         const userId = req.query.id
         const startDate = req.query.startdate
@@ -14,6 +15,5 @@ class WorkController {
         res.json(work.rows)
     }
 }
-
-module.exports = new WorkController();
+export default WorkController
 
