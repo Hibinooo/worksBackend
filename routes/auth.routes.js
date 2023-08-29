@@ -4,4 +4,6 @@ const router = express.Router();
 
 router.post('/login', authController.login)
 
+router.get('/refresh_token', authController.refresh)
+
 export default router
